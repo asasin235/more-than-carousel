@@ -10,7 +10,14 @@ function activate(e) {
   e.target.matches('.prev') && slider.append(items[items.length -1]);
 }
 document.addEventListener('click',activate,false);
-
+window.addEventListener('keydown', function(e) {
+  const items = document.querySelectorAll('.item');
+  if (e.key === 'ArrowRight') {
+    slider.append(items[0]);
+  } else if (e.key === 'ArrowLeft') {
+    slider.prepend(items[items.length - 1]);
+  }
+});
 // Add event listener to all "Read More" buttons
 document.querySelectorAll('.item button').forEach(button => {
   button.addEventListener('click', async function() {
